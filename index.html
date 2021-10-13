@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <script>
+      //Declaración Variabales
+
+      var num1 = 0;
+      var num2 = 0;
+      var opera;
+
+      //Funcion que coloca el numero presionando
+      function darNumero(numero) {
+        if (num1 == 0 && num1 !== "0.") {
+          num1 = numero;
+        } else {
+          num1 += numero;
+        }
+        refrescar();
+      }
+
+      //Funcion que coloca la coma al presionar el boton
+      function darComa() {
+        if (num1 == 0) {
+          num1 = "0.";
+        } else if (num1.toString().indexOf(".") == -1) {
+          num1 += ".";
+        }
+        refrescar();
+      }
+
+      //Funcion que coloca la C al presionar el boton(falta por colocar...)
+
+      function darC() {
+        num1 = 0;
+        num2 = 0;
+        refrescar();
+      }
+
+      //Funcion que realiza las diferentes operaciones aritmetcas en funcion del boton
+
+      function operar(valor) {
+        if (num1 == 0) {
+          num1 = parseFloat(document.getElementById("valor_numero").value);
+        }
+        num2 = parseFloat(num1);
+        num1 = 0;
+        opera = valor;
+      }
+
+      //Funcion para pulsar igual
+
+      /*
+        suma=1
+        resta=2
+        multiplicacion=3
+        division=4
+        */
+
+      function esIgual() {
+        num1 = parseFloat(num1);
+        switch (opera) {
+          case 1:
+            num1 += num2;
+            break;
+          case 2:
+            num1 = num2 - num1;
+            break;
+          case 3:
+            num1 *= num2;
+            break;
+          case 4:
+            num1 = num2 / num1;
+            break;
+        }
+        refrescar();
+        num1 = 0;
+        num2 = parseFloat(num1);
+      }
+
+      function refrescar() {
+        document.getElementById("valor_numero").value = num1;
+      }
+    </script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <title>Calculator!</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-center">
+
+          <div class="contenedor col-8 col-sm-6 col-lg-4  rounded shadow-lg">
+            <div
+              class="col-12 rounded-top bg-dark d-flex align-items-center justify-content-center"
+            >
+              <input
+                class="cajita_valor col-8 rounded bg-light"
+                id="valor_numero"
+                type="text"
+                value="0"
+                readonly="true"
+              />
+            </div>
+            <div
+              class="col-12 bg-dark d-flex align-items-center justify-content-center"
+            >
+              <button
+                type="button"
+                id="7"
+                value="7"
+                onclick="darNumero('7')"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                7
+              </button>
+              <button
+                type="button"
+                id="8"
+                onclick="darNumero('8')"
+                value="8"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                8
+              </button>
+              <button
+                type="button"
+                id="9"
+                onclick="darNumero('9')"
+                value="9"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                9
+              </button>
+              <button
+                type="button"
+                id="Dividir"
+                onclick="operar(4)"
+                value="/"
+                class="btn btn-info shadow col-3 m-2 funcion"
+              >
+                /
+              </button>
+            </div>
+
+            <div
+              class="col-12 bg-dark d-flex align-items-center justify-content-center"
+            >
+              <button
+                type="button"
+                id="4"
+                onclick="darNumero(4)"
+                value="4"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                4
+              </button>
+              <button
+                type="button"
+                id="5"
+                onclick="darNumero(5)"
+                value="5"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                5
+              </button>
+              <button
+                type="button"
+                id="6"
+                onclick="darNumero(6)"
+                value="6"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                6
+              </button>
+              <button
+                type="button"
+                id="Multiplicar"
+                onclick="operar(3)"
+                value="*"
+                class="btn btn-info shadow col-3 m-2 funcion"
+              >
+                x
+              </button>
+            </div>
+
+            <div
+              class="col-12 bg-dark d-flex align-items-center justify-content-center"
+            >
+              <button
+                type="button"
+                id="1"
+                value="1"
+                onclick="darNumero('1')"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                1
+              </button>
+              <button
+                type="button"
+                id="2"
+                onclick="darNumero('2')"
+                value="2"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                2
+              </button>
+              <button
+                type="button"
+                id="3"
+                onclick="darNumero('3')"
+                value="3"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                3
+              </button>
+              <button
+                type="button"
+                id="Restar"
+                onclick="operar(2)"
+                value="-"
+                class="btn btn-info shadow col-3 m-2 funcion"
+              >
+                -
+              </button>
+            </div>
+
+            <div
+              class="col-12 bg-dark d-flex align-items-center justify-content-center"
+            >
+              <button
+                type="button"
+                id="."
+                onclick="darComa()"
+                value="."
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                ,
+              </button>
+              <button
+                type="button"
+                id="0"
+                onclick="darNumero(0)"
+                value="0"
+                class="btn btn-secondary shadow col-2 m-2"
+              >
+                0
+              </button>
+
+              <button
+                type="button"
+                id="C"
+                onclick="darC()"
+                value="C"
+                class="btn btn-danger shadow col-2 m-2 funcion"
+              >
+                C
+              </button>
+
+              <button
+                type="button"
+                id="Sumar"
+                onclick="operar(1)"
+                value="+"
+                class="btn btn-info shadow col-3 m-2 funcion"
+              >
+                +
+              </button>
+            </div>
+
+            <div
+              class="col-12 rounded bg-dark d-flex align-items-center justify-content-center"
+            >
+              <button
+                type="button"
+                id="esIgual"
+                onclick="esIgual()"
+                value="="
+                class="btn btn-success shadow col-4 m-2 funcion"
+              >
+                =
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

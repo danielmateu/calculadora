@@ -1,0 +1,21 @@
+*{
+    background-color: beige;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.row{
+    height: 550px;
+}
+
+.form-control{
+    margin: 25px 0;
+   
+}
+
+.contenedor{
+    background: radial-gradient(circle at 75.15% 79.98%, #b7ccca 0, #adb8b7 25%, #9f9f9f 50%, #90868a 75%, #84747b 100%);
+}
+
+#valor_numero{
+    margin: 50px 0;
+    
+}
